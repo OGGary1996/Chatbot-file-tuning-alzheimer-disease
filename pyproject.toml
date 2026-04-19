@@ -1,0 +1,25 @@
+[project]
+name = "alzheimer-chatbot"
+version = "0.1.0"
+description = "Chainlit + LangChain RAG chatbot for Alzheimer's disease Q&A"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "accelerate",
+    "chainlit",
+    "faiss-cpu",
+    "huggingface-hub",
+    "langchain",
+    "langchain-classic",
+    "langchain-community",
+    "langchain-core",
+    "langchain-huggingface",
+    "pypdf",
+    "python-dotenv",
+    "sentence-transformers",
+    "torch",
+    "transformers",
+]
+
+[tool.uv]
+package = false

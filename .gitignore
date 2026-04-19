@@ -1,3 +1,6 @@
 /local_models
+.venv/
 .idea/
 .python-version
+__pycache__/
+*.pyc

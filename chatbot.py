@@ -1,4 +1,5 @@
 import os
+from functools import lru_cache
 
 # Step 0: Load environment variables from .env when available.
 try:
@@ -101,8 +102,10 @@ def load_llm():
     return llm
 
 # QA Model Function
+@lru_cache(maxsize=1)
 def qa_bot():
     # Step 3: Build the full QA pipeline (embeddings + retriever + LLM + prompt).
+    # Cache the chain once per process so deployments do not reload models per session.
     # Initialize embeddings
     embedding_kwargs = {'device': 'cpu'}
     if HF_TOKEN:
@@ -129,7 +132,7 @@ def final_result(query):
     # Step 4: Ask one question and return the raw QA output dictionary.
     # Helper for non-Chainlit usage (e.g., direct function calls/tests).
     qa_result = qa_bot()
-    response = qa_result({'query': query})
+    response = qa_result.invoke({'query': query})
     return response
 
 

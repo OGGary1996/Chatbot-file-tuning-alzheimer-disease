@@ -1,0 +1,11 @@
+.git
+.gitignore
+.env
+__pycache__/
+.idea/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb
+.venv/
+local_models/
